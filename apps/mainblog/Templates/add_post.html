@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Add post {% endblock %}
+{% block content %}
+
+<main class="container bg-light my-3">
+    <h3 class="text-center">Add Post</h3>
+    <section class="">
+        <form class="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+    </section>
+</main>
+{% endblock %}
