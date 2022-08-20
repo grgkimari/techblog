@@ -6,6 +6,7 @@
         <li><a href="{% url 'article_view' post.pk %}">{{post.title}}</a></li>
         <li>{{post.author}}</li>
         <li>{{post.body}}</li>
+        <li><a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary">Edit</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

@@ -1,7 +1,8 @@
 from urllib import request
 from django.shortcuts import render
-from  django.views.generic import ListView, DetailView, CreateView
+from  django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post
+from .forms import PostForm
 
 # def home(request):
 #     context = {}
@@ -17,5 +18,10 @@ class ArticleView(DetailView):
 
 class AddPostView(CreateView):
     model = Post
+    form_class = PostForm
     template_name = 'add_post.html'
-    fields = '__all__'
+
+class EditPostView(UpdateView):
+    model = Post
+    template_name = 'edit_post.html'
+    fields = ['title', 'body']

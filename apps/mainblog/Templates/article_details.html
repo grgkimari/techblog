@@ -3,6 +3,8 @@
     <h2>{{post.title}}</h2>
     <h6>{{post.author}}</h6><hr><br>
     <article>{{post.body}}</article>
+    <br>
+    <a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary">Edit</a>
     <br><br>
     <a href="{% url 'homepage' %}" class="btn btn-secondary">Home</a>
 {% endblock %}
