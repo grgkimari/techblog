@@ -22,11 +22,11 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  
+                  {% if request.user.is_authenticated %}
                   <li class="nav-item">
                     <a href="{% url 'add_post' %}" class="nav-link">Add Post</a>
                   </li>
-                  
-                  {% if request.user.is_authenticated %}
                     <li class="nav-item">
                       <strong>Logged in as : {{request.user}}</strong>
                     </li>

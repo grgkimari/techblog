@@ -7,9 +7,12 @@
         <li>{{post.author}}</li>
         <li>Written on : {{post.dateCreated}}</li>
         <li>{{post.body}}</li>
-        <li><a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary my-1">Edit</a></li>
-        <li><a href="{% url 'delete_post' post.pk %}" class="btn btn-danger my-1">Delete</a></li>
         <br><br>
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary my-1">Edit</a></li>
+            <li><a href="{% url 'delete_post' post.pk %}" class="btn btn-danger my-1">Delete</a></li>
+            <br><br>
+        {% endif %}
     {% endfor %}
 </ul>
 {% endblock %}
