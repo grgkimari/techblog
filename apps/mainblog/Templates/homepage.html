@@ -7,6 +7,7 @@
         <li>{{post.author}}</li>
         <li>{{post.body}}</li>
         <li><a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary">Edit</a></li>
+        <li><a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
