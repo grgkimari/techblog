@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Add Category{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated%}
+    <main class="container bg-light my-3">
+        <h3 class="text-center">Add Category</h3>
+        <section class="">
+            <form class="form-group" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="my-1 btn btn-secondary">Add</button>
+            </form>
+            <a href="{% url 'homepage' %}" class="my-1 btn btn-secondary">Home</a>
+        </section>
+    </main>
+{% else %}
+    <h1 class="text-danger">You are not authorized to access this page.</h1>
+{% endif %}
+{% endblock %}

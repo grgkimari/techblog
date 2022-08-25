@@ -2,7 +2,7 @@ from audioop import reverse
 from urllib import request
 from django.shortcuts import render
 from  django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm
 from django.urls import reverse_lazy
 
@@ -28,3 +28,8 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('homepage')
+
+class AddCategoryView(CreateView):
+    model = Category
+    fields  = '__all__'
+    template_name = 'add_category.html'
