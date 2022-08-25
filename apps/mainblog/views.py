@@ -3,6 +3,7 @@ from urllib import request
 from django.shortcuts import render
 from  django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category
+from django.db.models.functions import Lower
 from .forms import PostForm
 from django.urls import reverse_lazy
 
@@ -22,7 +23,7 @@ class AddPostView(CreateView):
 class EditPostView(UpdateView):
     model = Post
     template_name = 'edit_post.html'
-    fields = ['title', 'body']
+    fields = ['title', 'body', 'category']
 
 class DeletePostView(DeleteView):
     model = Post
@@ -33,3 +34,8 @@ class AddCategoryView(CreateView):
     model = Category
     fields  = '__all__'
     template_name = 'add_category.html'
+
+def categoryView(request, category):
+  
+    category_posts = [obj for obj in Post.objects.filter(category__icontains = category)]
+    return render(request, 'category.html', {'category' : category, 'category_posts' : category_posts})
