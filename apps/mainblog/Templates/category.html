@@ -9,7 +9,7 @@
             {% if category_posts %}
                 {% for obj in category_posts %}
                 <div class="container my-1 border border-dark bg-light">
-                    <a href="{% url 'article_view'  %}" class ="text-decoration-none">{{obj}}</a>
+                    {{obj}}
             </div>
                 {% endfor %}   
             {% else %}
