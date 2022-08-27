@@ -22,7 +22,7 @@ class Post(models.Model):
         ordering = ['-dateCreated']
 
     def __str__(self) -> str:
-        return "POST : " + self.title + " | " + str(self.author)
+        return "POST : " + self.title + " | " + str(self.author) + " | CATEGORY : " + self.category
 
     def get_absolute_url(self):
         return reverse("article_view", args=(str(self.id)))
