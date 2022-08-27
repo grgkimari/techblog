@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>{{post.title}}</h2>
-    <h6>{{post.author}}</h6><hr><br>
+    <h6>Written by : {{post.author}}</h6><hr><br>
     <article>{{post.body}}</article>
     <br>
     <a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary">Edit</a>
