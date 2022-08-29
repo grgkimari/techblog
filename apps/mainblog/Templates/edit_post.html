@@ -2,7 +2,7 @@
 {% block title %} Edit post {% endblock %}
 {% block content %}
 
-{% if user.is_authenticated%}
+{% if user.is_authenticated and user.id == post.author.id %}
     <main class="container bg-light my-3">
         <h3 class="text-center">Edit Post</h3>
         <section class="">
