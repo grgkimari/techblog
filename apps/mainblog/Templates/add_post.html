@@ -13,6 +13,11 @@
             </form>
         </section>
     </main>
+    <script>
+        let userId = "{{ user.id }}"
+        let username = "{{user.username}}"
+        document.getElementById("authorField").value = userId
+    </script>
 {% else %}
     <h1 class="text-danger">You are not authorized to access this page.</h1>
 {% endif %}
