@@ -18,6 +18,7 @@ class Post(models.Model):
     body = models.TextField()
     dateCreated = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=255,blank=True, null=True)
+    likes = models.ManyToManyField(User, related_name="blogpost")
     class Meta:
         ordering = ['-dateCreated']
 

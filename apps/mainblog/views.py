@@ -1,6 +1,6 @@
 from audioop import reverse
 from urllib import request
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from  django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category
 from django.db.models.functions import Lower
@@ -75,3 +75,8 @@ def CategoryView(request, category):
   
     category_posts = [obj for obj in Post.objects.filter(category__icontains = category)]
     return render(request, 'category.html', {'category' : category, 'category_posts' : category_posts})
+
+def LikeView(request, pk):
+    post = get_object_or_404(Post, id = pk)
+    post.likes.add(request.user)
+    return redirect('')

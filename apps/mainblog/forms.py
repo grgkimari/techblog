@@ -12,7 +12,6 @@ class PostForm(forms.ModelForm):
             'title' : forms.TextInput(attrs={'class' : 'form-control',}),
             'author' : forms.TextInput(attrs={'class' : 'form-control', 'value' : '', 'id' : "authorField", "type" : "hidden",}),
             'body' : forms.Textarea(attrs={'class' : 'form-control',}),
-            
         }
 
     
