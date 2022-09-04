@@ -5,10 +5,12 @@
     <article>{{post.body}}</article>
     <br>
     <br><br>
-    <form action="{% url like_post post.pk%}" method="post">
-        <{% csrf_token %}
-        <button type="submit" class="btn btn-primary" name="like_btn" value="Like"></button>
+    {%if user.is_authenticated %}
+    <form action="{% url 'like_post' post.pk%}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary my-1 name="like_btn" value="Like">Like</button>
     </form>
+    {%endif%}
     <a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary">Edit</a>
     <br><br>
     <a href="{% url 'homepage' %}" class="btn btn-sm btn-secondary">Home</a>
