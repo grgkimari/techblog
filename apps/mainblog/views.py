@@ -1,11 +1,11 @@
-from audioop import reverse
+from django.http import HttpResponseRedirect
 from urllib import request
 from django.shortcuts import render, get_object_or_404
 from  django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category
 from django.db.models.functions import Lower
 from .forms import PostForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 class HomeView(ListView):
     model = Post
@@ -22,9 +22,12 @@ class ArticleView(DetailView):
     template_name = 'article_details.html'
 
     def get_context_data(self, **kwargs: any) :
+        post = get_object_or_404(Post, id=self.kwargs['pk'])
+        total_likes = post.total_likes()
         category_menu = Category.objects.all()
         context = super(ArticleView, self).get_context_data(**kwargs)
         context['category_menu'] = category_menu
+        context["total_likes"] = total_likes
         return context
 
 class AddPostView(CreateView):
@@ -79,4 +82,4 @@ def CategoryView(request, category):
 def LikeView(request, pk):
     post = get_object_or_404(Post, id = pk)
     post.likes.add(request.user)
-    return redirect('')
+    return HttpResponseRedirect(reverse('article_view', args=[str(pk)]))

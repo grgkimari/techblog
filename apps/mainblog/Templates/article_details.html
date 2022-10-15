@@ -8,7 +8,8 @@
     {%if user.is_authenticated %}
     <form action="{% url 'like_post' post.pk%}" method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-primary my-1 name="like_btn" value="Like">Like</button>
+        <button type="submit" class="btn btn-primary my-2" name="like_btn" value="{{post.id }}">Like</button> <span class="container border border-success rounded mx-5"> {{total_likes}} likes</span>
+        
     </form>
     {%endif%}
     <a href="{% url 'edit_post' post.pk %}" class="btn btn-secondary">Edit</a>

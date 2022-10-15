@@ -19,11 +19,15 @@ class Post(models.Model):
     dateCreated = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=255,blank=True, null=True)
     likes = models.ManyToManyField(User, related_name="blogpost")
+
+    def total_likes(self):
+        return self.likes.count
+
     class Meta:
         ordering = ['-dateCreated']
 
     def __str__(self) -> str:
-        return "POST : " + self.title + " | " + str(self.author) + " | CATEGORY : " + self.category
+        return "POST : " + self.title + " | " + str(self.author) + " | CATEGORY : " + self.category + " | ID : " + str(self.id)
 
     def get_absolute_url(self):
         return reverse("article_view", args=(str(self.id)))
